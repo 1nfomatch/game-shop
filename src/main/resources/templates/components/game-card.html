@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div th:fragment="game-card" class="card card-clickable" th:data-game-id="${game.id}" onclick="openGameModal(event)">
+    <div class="position-relative">
+        <button type="button" class="btn btn-add-to-cart position-absolute top-0 end-0 mt-2 me-2" onclick="toggleCart(event)">
+            <span th:id="'cartIcon_'+${game.id}" class="icon add-to-cart-state">&#10010;</span>
+            <span th:id="'checkIcon_'+${game.id}" class="icon add-to-cart-state">&#10005;</span>
+        </button>
+        <img th:src="${game.getBackgroundImage()}" class="card-img-top card-image" alt="Game Image"/>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title" th:text="${game.getName()}"></h5>
+        <p class="card-text" th:text="'Genres: ' + ${game.getGenresPrintView()}"></p>
+    </div>
+    <div class="card-footer">
+        <small class="text-muted" th:text="'Released: ' + ${game.getReleased()}"></small>
+    </div>
+</div>
+
+</html>
